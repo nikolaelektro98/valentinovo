@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<title>Vidimo se ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle, #ff4d6d, #ff99ac);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Pacifico', cursive;
+}
+
+h1 {
+  color: white;
+  font-size: 64px;
+  text-shadow: 0 0 25px rgba(255,255,255,0.9);
+  animation: pulse 2s infinite alternate;
+  z-index: 2;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.2); }
+}
+
+.heart {
+  position: absolute;
+  animation: explode 2s ease-out forwards;
+  font-size: 30px;
+}
+
+@keyframes explode {
+  from { transform: scale(0) translate(0,0); opacity: 1; }
+  to {
+    transform: scale(1.5)
+      translate(calc(-150px + 300px * var(--x)),
+                calc(-150px + 300px * var(--y)));
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h1>Vidimo se 14-tog ❤️</h1>
+
+<script>
+function heartFirework() {
+  for (let i = 0; i < 20; i++) {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "❤️";
+    h.style.left = "50%";
+    h.style.top = "50%";
+    h.style.setProperty("--x", Math.random());
+    h.style.setProperty("--y", Math.random());
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 2000);
+  }
+}
+
+setInterval(heartFirework, 1200);
+</script>
+
+</body>
+</html>
